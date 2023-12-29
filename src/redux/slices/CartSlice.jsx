@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// eslint-disable-next-line react-refresh/only-export-components
 const CartSlice = createSlice({
     name: "cart",   
     initialState: {
@@ -14,6 +15,7 @@ const CartSlice = createSlice({
             state.cart = state.cart.filter((item) => item.id !== action.payload.id)
             console.log(state.cart);
         }
+
     }
 });
 export const { addToCart, removeFromCart } = CartSlice.actions;

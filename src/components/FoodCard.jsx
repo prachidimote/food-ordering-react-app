@@ -26,7 +26,7 @@ const FoodCard = ({id, name, price, desc, img, rating}) => {
           <AiFillStar className="mr-1 text-yellow-400" /> {rating}
         </span>
         <button className="p-1 text-white bg-green-500 rounded-lg hover:bg-green-600" onClick={() => {
-          dispatch(addToCart({ id, name, price, rating, qty:1 }))
+          dispatch(addToCart({ id, name, price, rating, qty:1, img }))
         }}>Add to Cart</button>
       </div>
     </div>
