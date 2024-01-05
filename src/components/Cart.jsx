@@ -7,7 +7,7 @@ const Cart = () => {
   //toggle button
   const [activeCart, setActiveCart] = useState(true);
  // eslint-disable-next-line no-unused-vars
- const cartItems = useSelector((state) => state.cartIt.cart);
+ const cartItems = useSelector((state) => state.cartIt.cartElem);
  console.log(cartItems)
   return (
     <>

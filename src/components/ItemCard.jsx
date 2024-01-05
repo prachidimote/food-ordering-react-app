@@ -2,6 +2,8 @@
 import { AiOutlinePlus, AiOutlineMinus, AiFillDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../redux/slices/CartSlice";
+import { incrementQty } from "../redux/slices/CartSlice";
+import { decrementQty } from "../redux/slices/CartSlice";
 // eslint-disable-next-line no-unused-vars
 const ItemCard = ({id, name, price, qty, img}) => {
   const dispatch = useDispatch();
@@ -15,9 +17,9 @@ const ItemCard = ({id, name, price, qty, img}) => {
         <div>
           <span className="text-green-500 font-bold">₹{price}</span>
           <div className="flex gap-3">
-             <AiOutlinePlus className="border-2 border-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-lg transition-all ease-linear cursor-pointer" />
+             <AiOutlinePlus onClick={() => dispatch(incrementQty({id, name, img, price, qty}))} className="border-2 border-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-lg transition-all ease-linear cursor-pointer" />
             <span>{qty}</span>
-            <AiOutlineMinus className="border-2 border-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-lg transition-all ease-linear cursor-pointer" />
+            <AiOutlineMinus onClick={() => dispatch(decrementQty({id, name, img, price, qty}))} className="border-2 border-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-lg transition-all ease-linear cursor-pointer" />
           </div>
           </div>
             
