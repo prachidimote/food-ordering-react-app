@@ -8,6 +8,9 @@ const Cart = () => {
   const [activeCart, setActiveCart] = useState(true);
  // eslint-disable-next-line no-unused-vars
  const cartItems = useSelector((state) => state.cartIt.cartElem);
+ const totalQty = cartItems.reduce((totalQty, item) => totalQty + item.qty, 0);
+ const totalPrice = cartItems.reduce((total, item) => total + item.qty * item.price, 0 );
+ console.log(totalQty);
  console.log(cartItems)
   return (
     <>
@@ -34,13 +37,13 @@ const Cart = () => {
       
       
       <div className="absolute bottom-0">
-        <h3 className="font-semibold text-gray-800">Items : </h3>
-        <h3 className="font-semibold text-gray-800">Total Amount :  </h3>
+        <h3 className="font-semibold text-gray-800">Items : {totalQty}</h3>
+        <h3 className="font-semibold text-gray-800">Total Amount : {totalPrice}  </h3>
         <hr />
         <button className="mb-5 bg-green-500 font-bold px-3 py-2 text-white rounded-lg w-[90vw] lg:w-[18vw] ">Checkout</button>
       </div>
     </div>
-     <FaShoppingCart onClick={() => setActiveCart(!activeCart)} className='rounded-full text-5xl shadow-md p-3 fixed bottom-10 right-4 cursor-pointer' />
+     <FaShoppingCart onClick={() => setActiveCart(!activeCart)} className={`rounded-full text-5xl shadow-md p-3 fixed bottom-10 right-4 cursor-pointer`} />
      </>
   )
 }

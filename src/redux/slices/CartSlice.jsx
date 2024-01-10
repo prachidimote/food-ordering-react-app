@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 // eslint-disable-next-line react-refresh/only-export-components
 const CartSlice = createSlice({
     name: "cart",   
@@ -27,13 +26,14 @@ const CartSlice = createSlice({
             console.log(state.cartElem);
         },
         incrementQty: (state, action) => {
-            state.cartElem = state.cartElem.map((item) => item.id === action.payload.id ? { ...item, qty: item.qty + 1} : item)
+            state.cartElem = state.cartElem.map((item) => item.id === action.payload.id ? { ...item, qty: item.qty + 1} : item);
+            localStorage.setItem("cartElem",JSON.stringify(state.cartElem))  
         },
         decrementQty: (state, action) => {
-            state.cartElem = state.cartElem.map((item) => item.id === action.payload.id ? { ...item, qty: item.qty - 1} : item)
+            state.cartElem = state.cartElem.map((item) => item.id === action.payload.id ? { ...item, qty: item.qty - 1} : item);
+            localStorage.setItem("cartElem",JSON.stringify(state.cartElem))  
         },
-       
-
+            
     }
 });
 export const { addToCart, removeFromCart, incrementQty, decrementQty } = CartSlice.actions;
